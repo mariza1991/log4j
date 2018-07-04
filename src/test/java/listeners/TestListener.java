@@ -24,8 +24,6 @@ import java.util.Date;
 
 public class TestListener implements ITestListener {
 
-    private static WebDriver driver;
-
     private Logger logger = Logger.getLogger(TestListener.class);
 
     public void onTestStart(ITestResult iTestResult) {
@@ -50,7 +48,7 @@ public class TestListener implements ITestListener {
         logger.error(sb.getBuffer().toString());
 
         Screenshot screenshot = new Screenshot();
-        screenshot.makeScreenshot(driver);
+        screenshot.makeScreenshot();
     }
 
     @Override

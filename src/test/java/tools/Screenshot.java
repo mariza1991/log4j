@@ -12,17 +12,19 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import static utils.WebdriverManager.getDriver;
+
 public class Screenshot {
 
-    private static final String PATH_TO_SCRENSHOT = "src/main/output/";
+    private static final String PATH_TO_SCRENSHOT = "target/output/";
 
-    public void makeScreenshot(WebDriver driver)
+    public void makeScreenshot()
     {
         DateFormat dateFormat = new SimpleDateFormat("MM.dd.yyyy.HH.mm.ss");
         Date today = Calendar.getInstance().getTime();
         String reportDate = dateFormat.format(today);
 
-        File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        File srcFile = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);
         try {
             FileUtils.copyFile(srcFile, new File(PATH_TO_SCRENSHOT + "screenshot." + reportDate + ".png"));
         } catch (IOException e) {}

@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
+import utils.WebdriverManager;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -27,7 +28,7 @@ public class BaseTest {
     @BeforeClass(alwaysRun = true)
     public void beforeTest(){
         addListener(new EventListener());
-        driver = new ChromeDriver();
+        driver = WebdriverManager.getDriver();
         wait = new WebDriverWait(driver, timeout);
     }
 
